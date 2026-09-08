@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>蕭瑞興 | Xiao-Rui-Xing - 作品集與個人 IP</title>
+  
+  <!-- Google Fonts & Font Awesome 圖示庫 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- 外部樣式表 -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 背景氛圍光效 -->
+  <div class="bg-glow"></div>
+
+  <!-- 導航列 -->
+  <nav>
+    <div class="nav-logo">XIAO RUI-XING</div>
+    <div class="nav-links">
+      <a href="#about">關於我</a>
+      <a href="#portfolio">精選專案</a>
+      <a href="#contact">聯絡交流</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- 主視覺介紹 (Hero Section) -->
+    <section class="hero" id="about">
+      <div class="hero-badge">🎓 大學四年歷程．跨領域成果集</div>
+      <h1>我是 蕭瑞興 (Xiao-Rui-Xing)</h1>
+      <p>
+        結合音樂創作、視覺美學與人文社會觀察的實踐者。<br>
+        在此記錄我四年來在詞曲編排、平面影像設計與學術分析的代表作品。
+      </p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> 瀏覽成果作品</a>
+        <a href="#contact" class="btn btn-secondary"><i class="fa-regular fa-envelope"></i> 聯絡我</a>
+      </div>
+    </section>
+
+    <!-- 作品展示區與分類篩選 -->
+    <section id="portfolio">
+      <div class="filter-section">
+        <button class="filter-btn active" data-filter="all">全部作品</button>
+        <button class="filter-btn" data-filter="music">音樂創作與後製</button>
+        <button class="filter-btn" data-filter="design">視覺與數位設計</button>
+        <button class="filter-btn" data-filter="academic">人文學術與專案</button>
+      </div>
+
+      <!-- 作品網格 -->
+      <div class="portfolio-grid">
+
+        <!-- 專案 1：音樂製作 -->
+        <article class="card" data-category="music">
+          <div class="card-thumb">
+            <i class="fa-solid fa-music"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">詞曲原創</span>
+              <span class="tag">A minor 編曲</span>
+            </div>
+            <h3 class="card-title">原創歌曲創作與人聲錄音工程</h3>
+            <p class="card-desc">
+              從靈感採集、和弦編配（以 A minor/Am 展開）到人聲和聲錄製，結合情感敘事與現代數位音訊擴展創作。
+            </p>
+            <a href="#" class="card-link">深入查看 <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- 專案 2：視覺品牌設計 -->
+        <article class="card" data-category="design">
+          <div class="card-thumb">
+            <i class="fa-solid fa-pen-nib"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">品牌識別</span>
+              <span class="tag">幾何技法</span>
+            </div>
+            <h3 class="card-title">在地意象與標誌視覺設計</h3>
+            <p class="card-desc">
+              將在地風貌與故事轉譯為現代幾何徽章與實體獎盃造型，兼顧比例美學、排版與品牌整體視覺連貫性。
+            </p>
+            <a href="#" class="card-link">深入查看 <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- 專案 3：學術與理論分析 -->
+        <article class="card" data-category="academic">
+          <div class="card-thumb">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">社會學</span>
+              <span class="tag">常民方法學</span>
+            </div>
+            <h3 class="card-title">日常生活方法論與當代社會互動研究</h3>
+            <p class="card-desc">
+              運用 Garfinkel 常民方法學與社會互動理論，針對社群媒介行為、空間文化流動進行深入專案探討與質化分析。
+            </p>
+            <a href="#" class="card-link">深入查看 <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- 專案 4：數位設計與 IP 角色 -->
+        <article class="card" data-category="design">
+          <div class="card-thumb">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">數位插畫</span>
+              <span class="tag">LINE貼圖</span>
+            </div>
+            <h3 class="card-title">數位角色 IP 與系列貼圖實踐</h3>
+            <p class="card-desc">
+              規劃 3x3 網格視覺框架，打造具傳播力與情緒價值的數位角色形象，完成社群應用與商業平台上架規格。
+            </p>
+            <a href="#" class="card-link">深入查看 <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- 專案 5：企業管理與流程企劃 -->
+        <article class="card" data-category="academic">
+          <div class="card-thumb">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">企業流程</span>
+              <span class="tag">BPR 分析</span>
+            </div>
+            <h3 class="card-title">商業流程再造與個案分析企劃</h3>
+            <p class="card-desc">
+              檢視組織內部架構與資訊流動瓶頸，擬定優化流程策略圖，展現邏輯架構化與專案溝通簡報能力。
+            </p>
+            <a href="#" class="card-link">深入查看 <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- 聯絡與頁尾 -->
+  <footer id="contact">
+    <div class="container">
+      <p class="footer-title">蕭瑞興 (Xiao-Rui-Xing) · 個人作品庫</p>
+      <p class="footer-subtitle">開放各項音樂製作、視覺專案與企劃合作洽談</p>
+      <div class="footer-socials">
+        <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:your-email@example.com"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Xiao-Rui-Xing. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <!-- 外部 JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
