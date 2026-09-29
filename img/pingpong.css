@@ -1,0 +1,457 @@
+/* ==========================================================================
+   乒乓工坊 PongLab - 樣式表 (style.css)
+   - 純 CSS，無 JavaScript
+   - 符合手機端 390px 優先與單欄無水平溢出
+   - 兼顧桌機響應式格線 (700px, 1000px)
+   ========================================================================== */
+
+/* 全域重設與基本設定 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.6;
+  color: #2b2d42;
+  background-color: #f8f9fa;
+  padding-bottom: 40px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 鍵盤無障礙焦點提示 (簡報第 23 頁規範) */
+a:focus,
+button:focus {
+  outline: 3px solid #e63946;
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   頂部導覽列 (支援自動折行與手機閱讀)
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: #1d3557;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* 允許窄螢幕自動折行 */
+  gap: 12px;
+}
+
+.logo a {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #f1faee;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.site-nav a {
+  font-size: 0.95rem;
+  color: #a8dadc;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.site-nav a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   主視覺區塊 (Hero Section)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  background: linear-gradient(135deg, #1d3557 0%, #2b2d42 100%);
+  color: #ffffff;
+  padding: 48px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  background-color: #e63946;
+  color: #ffffff;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.hero-section h1 {
+  font-size: 1.85rem;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  color: #f1faee;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: #f1faee;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #e63946;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #d62828;
+}
+
+/* --------------------------------------------------------------------------
+   共用區塊標題
+   -------------------------------------------------------------------------- */
+.section-title {
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 0 16px;
+}
+
+.section-title h2 {
+  font-size: 1.5rem;
+  color: #1d3557;
+  margin-bottom: 6px;
+}
+
+.section-title p {
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+/* --------------------------------------------------------------------------
+   商品展示區 (回應痛點 1、2、3：集中呈現名稱、價格、規格與運費)
+   -------------------------------------------------------------------------- */
+.products-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+/* 響應式格線：預設單欄 (390px 友善) */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.product-image-wrap {
+  position: relative;
+  background-color: #ffffff;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.product-image {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain; /* 確保球拍與商品完整展示不被裁切 */
+}
+
+/* 打法標籤與認證卡標 */
+.card-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.tag-style { background-color: #457b9d; }
+.tag-cert { background-color: #2a9d8f; }
+.tag-accessory { background-color: #e76f51; }
+
+.product-info {
+  padding: 20px;
+}
+
+.quality-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.badge-mini {
+  background-color: #edf2f4;
+  color: #457b9d;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  color: #1d3557;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  color: #495057;
+  margin-bottom: 14px;
+}
+
+/* 規格尺寸直接集中呈現 (長寬高/厚度/柄型) */
+.specs-list {
+  background-color: #f8f9fa;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  border-left: 3px solid #457b9d;
+}
+
+.specs-list dt {
+  font-weight: 700;
+  color: #1d3557;
+  margin-bottom: 2px;
+}
+
+.specs-list dd {
+  color: #6c757d;
+}
+
+/* 價格與含運試算集中區 (回應痛點 1) */
+.price-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff8f8;
+  border: 1px dashed #e63946;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.price-main {
+  color: #e63946;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.currency {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.price-amount {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.price-shipping-hint {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #d62828;
+  margin-top: 4px;
+}
+
+.free-shipping-tip {
+  font-size: 0.8rem;
+  color: #2a9d8f;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   配送說明區 (Shipping Section)
+   -------------------------------------------------------------------------- */
+.shipping-section {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 16px;
+}
+
+.shipping-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.shipping-item {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.shipping-item h3 {
+  font-size: 1.1rem;
+  color: #1d3557;
+  margin-bottom: 8px;
+}
+
+.shipping-item p {
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.highlight-box {
+  border-left: 4px solid #e63946;
+  background-color: #fffdfd;
+}
+
+/* --------------------------------------------------------------------------
+   常見問題區 (FAQ Section)
+   -------------------------------------------------------------------------- */
+.faq-section {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 16px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.faq-question {
+  font-size: 1rem;
+  color: #1d3557;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.faq-answer {
+  font-size: 0.9rem;
+  color: #495057;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   頁尾聲明與來源 (Footer)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: #1d3557;
+  color: #f1faee;
+  padding: 36px 20px 20px 20px;
+  margin-top: 60px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.copyright {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.academic-notice,
+.sources-notice {
+  color: #a8dadc;
+  margin-bottom: 10px;
+}
+
+.back-to-top {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.back-to-top a {
+  color: #f1faee;
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   響應式斷點 (Responsive Breakpoints - 簡報第 21 頁規範)
+   -------------------------------------------------------------------------- */
+/* 平板尺寸 (700px 以上)：商品改為雙欄 */
+@media (min-width: 700px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+  
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .shipping-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 桌機尺寸 (1000px 以上)：商品改為三欄 */
+@media (min-width: 1000px) {
+  .hero-section {
+    padding: 64px 20px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
