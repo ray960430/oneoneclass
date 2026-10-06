@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMASH LAB ⚡ 羽球潮創工坊｜打球就是要帥又強！</title>
+  <!-- 外部 CSS 樣式表 -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Google 字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Noto+Sans+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 頂部跑馬燈公告（年輕活潑感） -->
+  <aside class="top-marquee" aria-label="公告訊息">
+    <div class="marquee-track">
+      <span>🔥 全館滿 NT$ 1,500 免運費</span>
+      <span>⚡ 專業穿線當日收單・快速出貨</span>
+      <span>🏸 打造屬於你的下壓必殺球！</span>
+      <span>🎁 加入會員首單現折 NT$ 100</span>
+    </div>
+  </aside>
+
+  <!-- 導航列 -->
+  <header class="navbar">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <span class="logo-lightning">⚡</span>SMASH<span class="logo-highlight">LAB</span>
+        <span class="logo-pill">羽球工坊</span>
+      </a>
+
+      <div class="nav-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="找球拍、球鞋、手膠或輸入編號..." oninput="handleSearch()">
+      </div>
+
+      <button class="cart-btn" onclick="toggleCart()" aria-label="購物車">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-label">裝備袋</span>
+        <span id="cartCount" class="badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero 活潑熱血標題 -->
+  <section class="hero-box">
+    <div class="hero-inner">
+      <div class="bubble-tag">🏸 LEVEL UP YOUR GAME 🚀</div>
+      <h1 class="hero-title">
+        上場，就是要<span class="text-glow">殺得漂亮！</span>
+      </h1>
+      <p class="hero-subtitle">
+        告別打不順手的裝備！球友實測推薦・職人微調穿線・10 大必敗神級裝備清單
+      </p>
+
+      <!-- 快速亮點標籤 -->
+      <div class="pills-row">
+        <span class="pill-item">💯 100% 正品保障</span>
+        <span class="pill-item">🎯 0.1 磅微調穿線</span>
+        <span class="pill-item">⚡ 擊球初速提升 8%</span>
+        <span class="pill-item">🚀 系隊開團指定</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 商品專區 -->
+  <main class="store-section" id="products">
+    <div class="container">
+      
+      <!-- 分類標籤切換 -->
+      <div class="tabs-header">
+        <h2 class="title-with-pill">裝備選物店 <span>10款熱賣神裝</span></h2>
+        
+        <div class="tag-filters">
+          <button class="tab active" onclick="filterCategory('all', this)">全部裝備 (10)</button>
+          <button class="tab" onclick="filterCategory('racket', this)">🏸 速度殺球拍</button>
+          <button class="tab" onclick="filterCategory('shuttlecock', this)">🪶 耐打羽球</button>
+          <button class="tab" onclick="filterCategory('shoes', this)">👟 護踝戰靴</button>
+          <button class="tab" onclick="filterCategory('accessory', this)">⚡ 線材與潮配件</button>
+        </div>
+      </div>
+
+      <!-- 商品網格 -->
+      <div class="product-grid" id="productGrid">
+
+        <!-- 01: RKT-ATT-001 -->
+        <article class="item-card" data-category="racket" data-id="RKT-ATT-001">
+          <div class="tag-hot">🔥 後場重砲手</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/01.jpg" alt="ThunderStrike 9000 破風進攻羽球拍" onerror="this.src='https://placehold.co/50x50/1e2638/76ff03?text=01'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">RKT-ATT-001</span>
+              <h3 class="item-title">ThunderStrike 9000 破風進攻拍</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">4U(83g) ｜ 頭重硬中管 ｜ 最高30磅</div>
+          <p class="item-desc">專為殺球而生！高剛性破風碳纖框，球速瞬間暴衝，後場一拍釘地板超爽快！</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>4,800</span>
+            <button class="add-btn" onclick="addToCart('RKT-ATT-001', 'ThunderStrike 9000 破風進攻羽球拍', 4800, 'images/01.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 02: RKT-ALL-002 -->
+        <article class="item-card" data-category="racket" data-id="RKT-ALL-002">
+          <div class="tag-hot blue">⚡ 前場封網神拍</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/02.jpg" alt="AeroFlow 77 輕量極速羽球拍" onerror="this.src='https://placehold.co/50x50/1e2638/00e5ff?text=02'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">RKT-ALL-002</span>
+              <h3 class="item-title">AeroFlow 77 輕量極速羽球拍</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">5U(78g) ｜ 平衡點適中 ｜ 彈性中管</div>
+          <p class="item-desc">平抽快擋不卡手！極輕揮速，雙打前場抓球防守反擊超靈活，女生新手也能輕鬆駕馭！</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>3,980</span>
+            <button class="add-btn" onclick="addToCart('RKT-ALL-002', 'AeroFlow 77 輕量極速羽球拍', 3980, 'images/02.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 03: SHU-PRO-010 -->
+        <article class="item-card" data-category="shuttlecock" data-id="SHU-PRO-010">
+          <div class="tag-hot gold">🏆 賽事指定款</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/03.jpg" alt="Tour Aero 鵝毛比賽級羽球 (12入)" onerror="this.src='https://placehold.co/50x50/1e2638/ffd600?text=03'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">SHU-PRO-010</span>
+              <h3 class="item-title">Tour Aero 鵝毛比賽級羽球(12入)</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">特級天然鵝毛 ｜ 全軟木球頭 ｜ 速度77</div>
+          <p class="item-desc">落點精準不亂飄！精選刀翎天然鵝毛，耐打度提升30%，擊球聲清脆帶感。</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>820</span>
+            <button class="add-btn" onclick="addToCart('SHU-PRO-010', 'Tour Aero 鵝毛比賽級羽球 (12入)', 820, 'images/03.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 04: SHU-TRN-011 -->
+        <article class="item-card" data-category="shuttlecock" data-id="SHU-TRN-011">
+          <div class="tag-hot">💥 系隊開團性價比王</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/04.jpg" alt="ClubMaster 鴨毛高耐打訓練球 (12入)" onerror="this.src='https://placehold.co/50x50/1e2638/76ff03?text=04'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">SHU-TRN-011</span>
+              <h3 class="item-title">ClubMaster 鴨毛耐打訓練球</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">精選鴨毛 ｜ 複合軟木 ｜ 12入裝</div>
+          <p class="item-desc">毛骨超耐打、不易炸毛！天天暢打不心疼，球隊與社團長期練習首選。</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>520</span>
+            <button class="add-btn" onclick="addToCart('SHU-TRN-011', 'ClubMaster 鴨毛高耐打訓練球 (12入)', 520, 'images/04.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 05: FOT-SUP-021 -->
+        <article class="item-card" data-category="shoes" data-id="FOT-SUP-021">
+          <div class="tag-hot orange">🛡️ 護踝避震神器</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/05.jpg" alt="Vortex Guard 專業抗扭避震羽球鞋" onerror="this.src='https://placehold.co/50x50/1e2638/ff6d00?text=05'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">FOT-SUP-021</span>
+              <h3 class="item-title">Vortex Guard 抗扭避震羽球鞋</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">立體碳纖抗扭片 ｜ 加寬防側翻 ｜ 止滑生膠</div>
+          <p class="item-desc">大跨步急停煞得住！中底碳片保護足弓不內翻，膝蓋救星、落地穩如泰山！</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>3,650</span>
+            <button class="add-btn" onclick="addToCart('FOT-SUP-021', 'Vortex Guard 專業抗扭避震羽球鞋', 3650, 'images/05.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 06: FOT-SPD-022 -->
+        <article class="item-card" data-category="shoes" data-id="FOT-SPD-022">
+          <div class="tag-hot blue">👟 步伐推進器</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/06.jpg" alt="FlashLight 3.0 極輕競速羽球鞋" onerror="this.src='https://placehold.co/50x50/1e2638/00e5ff?text=06'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">FOT-SPD-022</span>
+              <h3 class="item-title">FlashLight 3.0 極輕競速羽球鞋</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">單隻270g ｜ 透氣針織 ｜ 瞬間推蹬大底</div>
+          <p class="item-desc">腳感輕若無物！瞬間起跳推蹬回饋極快，大面積散熱透氣孔，打滿全場不悶熱。</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>3,280</span>
+            <button class="add-btn" onclick="addToCart('FOT-SPD-022', 'FlashLight 3.0 極輕競速羽球鞋', 3280, 'images/06.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 07: STR-ELT-031 -->
+        <article class="item-card" data-category="accessory" data-id="STR-ELT-031">
+          <div class="tag-hot">🔊 金屬炸裂爆音</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/07.jpg" alt="NanoBounce 66 高彈極細羽毛球拍線" onerror="this.src='https://placehold.co/50x50/1e2638/76ff03?text=07'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">STR-ELT-031</span>
+              <h3 class="item-title">NanoBounce 66 高彈極細球線</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">線徑 0.66mm ｜ 長度 10m ｜ 奈米高彈編織</div>
+          <p class="item-desc">擊球聲音清脆悅耳！超細線徑減少阻力，出球初速超猛，手腕微發力就到底線。</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>240</span>
+            <button class="add-btn" onclick="addToCart('STR-ELT-031', 'NanoBounce 66 高彈極細羽毛球拍線', 240, 'images/07.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 08: BAG-PRT-041 -->
+        <article class="item-card" data-category="accessory" data-id="BAG-PRT-041">
+          <div class="tag-hot orange">🎒 潮人球袋</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/08.jpg" alt="ProTour 6支裝多功能競技羽球拍袋" onerror="this.src='https://placehold.co/50x50/1e2638/ff6d00?text=08'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">BAG-PRT-041</span>
+              <h3 class="item-title">ProTour 6支裝多功能競技拍袋</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">鋁箔恆溫層 ｜ 獨立鞋倉 ｜ 減壓雙肩背</div>
+          <p class="item-desc">內置隔熱鋁箔避免球拍掉磅！獨立鞋倉通風除臭，背上球袋出發球場超帥氣！</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>1,980</span>
+            <button class="add-btn" onclick="addToCart('BAG-PRT-041', 'ProTour 6支裝多功能競技羽球拍袋', 1980, 'images/08.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 09: ACC-GRP-051 -->
+        <article class="item-card" data-category="accessory" data-id="ACC-GRP-051">
+          <div class="tag-hot blue">🖐️ 手汗大戶必買</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/09.jpg" alt="DryGrip 極吸汗防滑握把布 (5入裝)" onerror="this.src='https://placehold.co/50x50/1e2638/00e5ff?text=09'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">ACC-GRP-051</span>
+              <h3 class="item-title">DryGrip 吸汗防滑握把布(5入)</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">厚度 0.6mm ｜ 微孔高吸水 ｜ 多彩套裝</div>
+          <p class="item-desc">爆汗也不打滑！微孔透氣吸水表面，手感乾爽軟彈，握拍換面不再心驚膽戰。</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>220</span>
+            <button class="add-btn" onclick="addToCart('ACC-GRP-051', 'DryGrip 極吸汗防滑握把布 (5入裝)', 220, 'images/09.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+        <!-- 10: ACC-SOK-061 -->
+        <article class="item-card" data-category="accessory" data-id="ACC-SOK-061">
+          <div class="tag-hot">🧦 起水泡終結者</div>
+          <div class="card-top">
+            <div class="img-box-50">
+              <img src="images/10.jpg" alt="CourtShield 專業毛圈加厚加壓羽球襪" onerror="this.src='https://placehold.co/50x50/1e2638/76ff03?text=10'">
+            </div>
+            <div class="card-heading">
+              <span class="sku-code">ACC-SOK-061</span>
+              <h3 class="item-title">CourtShield 毛圈加厚加壓襪</h3>
+            </div>
+          </div>
+          <div class="spec-capsule">75%精梳棉 ｜ 腳底厚毛圈 ｜ 足弓束緊防滑</div>
+          <p class="item-desc">腳底加厚立體毛圈，超強緩衝急停衝擊；足弓緊密包覆，襪身激烈跑動不移位！</p>
+          <div class="card-bottom">
+            <span class="item-price"><small>NT$</small>180</span>
+            <button class="add-btn" onclick="addToCart('ACC-SOK-061', 'CourtShield 專業毛圈加厚加壓羽球襪', 180, 'images/10.jpg')">+ 搶先入手</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 購物車抽屜 -->
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3>⚡ 我的選購裝備</h3>
+      <button class="close-drawer" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="drawer-body" id="cartItemList">
+      <p class="empty-cart-text">目前還沒選購任何裝備，快挑把好拍上場吧！</p>
+    </div>
+    <div class="drawer-footer">
+      <div class="cart-total-row">
+        <span>小計金額：</span>
+        <strong id="cartTotalPrice">NT$ 0</strong>
+      </div>
+      <button class="btn-checkout" onclick="checkout()">立即結帳 🚀</button>
+    </div>
+  </aside>
+  <div class="drawer-overlay" id="drawerOverlay" onclick="toggleCart()"></div>
+
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container footer-flex">
+      <div>
+        <div class="logo">⚡SMASH<span class="logo-highlight">LAB</span></div>
+        <p class="footer-desc">專注專業羽球器材・職人電腦穿線・手柄改裝調校</p>
+      </div>
+      <p class="copyright">&copy; 2026 SMASH LAB. Keep Smashing Hard!</p>
+    </div>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    function addToCart(id, name, price, img) {
+      const item = cart.find(i => i.id === id);
+      if (item) {
+        item.qty += 1;
+      } else {
+        cart.push({ id, name, price, img, qty: 1 });
+      }
+      renderCart();
+      openCart();
+    }
+
+    function updateQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) {
+          cart = cart.filter(i => i.id !== id);
+        }
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      const listEl = document.getElementById('cartItemList');
+      const countEl = document.getElementById('cartCount');
+      const totalEl = document.getElementById('cartTotalPrice');
+
+      const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+      const totalPrice = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+
+      countEl.textContent = totalItems;
+      totalEl.textContent = 'NT$ ' + totalPrice.toLocaleString();
+
+      if (cart.length === 0) {
+        listEl.innerHTML = '<p class="empty-cart-text">目前還沒選購任何裝備，快挑把好拍上場吧！</p>';
+        return;
+      }
+
+      listEl.innerHTML = cart.map(i => `
+        <div class="cart-item">
+          <img src="${i.img}" alt="${i.name}" class="cart-img-50" onerror="this.src='https://placehold.co/50x50/1e2638/76ff03?text=item'">
+          <div class="cart-info">
+            <div class="cart-name">${i.name}</div>
+            <div class="cart-price">NT$ ${i.price.toLocaleString()}</div>
+            <div class="cart-ctrl">
+              <button onclick="updateQty('${i.id}', -1)">-</button>
+              <span>${i.qty}</span>
+              <button onclick="updateQty('${i.id}', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleCart() {
+      document.getElementById('cartDrawer').classList.toggle('open');
+      document.getElementById('drawerOverlay').classList.toggle('open');
+    }
+
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.add('open');
+    }
+
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.item-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function handleSearch() {
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.item-card');
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+
+    function checkout() {
+      if (cart.length === 0) return alert('購物車內還沒有商品喔！');
+      alert('
