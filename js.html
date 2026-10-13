@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>潮流服飾商城 - 鈔票T恤專場</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes floatFly {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(0.6);
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.95;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(var(--scale-end));
+        opacity: 0;
+      }
+    }
+
+    .flying-tshirt {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      animation: floatFly var(--duration) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.25));
+    }
+
+    /* 鈔票衣服自製 SVG 圖標樣式 */
+    .shirt-shape {
+      fill: #ffffff;
+      stroke: #334155;
+      stroke-width: 2.5;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 min-h-screen text-slate-800 font-sans flex flex-col items-center">
+
+  <!-- 頁面頂部導航 -->
+  <header class="w-full bg-white shadow-sm border-b border-slate-200 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl font-black bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">MONEY WEAR</span>
+        <span class="text-xs uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">限定發售</span>
+      </div>
+      
+      <!-- 購物車圖示計數 -->
+      <div class="flex items-center space-x-2 bg-slate-50 border border-slate-200 px-3.5 py-1.5 rounded-full shadow-inner">
+        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <span class="text-sm font-semibold">購物車</span>
+        <span id="cartCount" class="bg-emerald-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主要商品展示區 -->
+  <main class="w-full max-w-5xl px-4 py-8 flex-1 flex flex-col justify-center items-center">
+    <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden w-full max-w-4xl grid grid-cols-1 md:grid-cols-2">
+      
+      <!-- 商品視覺區 -->
+      <div class="p-8 bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col items-center justify-center relative">
+        <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">HOT ITEM</span>
+        
+        <!-- 展示一件印有千元鈔票的衣服示意圖 -->
+        <div class="relative w-72 h-80 flex items-center justify-center">
+          <svg viewBox="0 0 200 220" class="w-full h-full filter drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
+            <!-- T恤輪廓 -->
+            <path d="M 65 20 C 80 32, 120 32, 135 20 L 180 50 L 155 85 L 140 75 L 140 195 L 60 195 L 60 75 L 45 85 L 20 50 Z" 
+                  fill="#ffffff" stroke="#cbd5e1" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M 65 20 C 80 32, 120 32, 135 20 C 120 38, 80 38, 65 20 Z" fill="#e2e8f0"/>
+            
+            <!-- 衣服中央印花：千元鈔票圖紋 -->
+            <g transform="translate(62, 75)">
+              <!-- 鈔票底卡 -->
+              <rect width="76" height="42" rx="2" fill="#3b82f6" opacity="0.9" stroke="#1d4ed8" stroke-width="1.5"/>
+              <!-- 鈔票細節紋理與數額 -->
+              <rect x="3" y="3" width="70" height="36" rx="1.5" fill="#60a5fa" stroke="#93c5fd" stroke-width="1"/>
+              <circle cx="20" cy="21" r="10" fill="#93c5fd" opacity="0.6"/>
+              <text x="38" y="25" font-size="12" font-weight="900" fill="#ffffff" font-family="monospace">1000</text>
+              <text x="6" y="11" font-size="5" fill="#eff6ff" font-weight="bold">NT$ 壹仟圓</text>
+              <text x="45" y="36" font-size="5" fill="#eff6ff">CENTRAL BANK</text>
+              
+              <!-- 疊加第二張百元紅色鈔票層次效果 -->
+              <g transform="translate(8, 22) rotate(-8)">
+                <rect width="60" height="30" rx="1.5" fill="#ef4444" opacity="0.85" stroke="#b91c1c" stroke-width="1"/>
+                <text x="24" y="19" font-size="10" font-weight="900" fill="#ffffff" font-family="monospace">100</text>
+                <text x="4" y="9" font-size="4.5" fill="#fee2e2">NT$ 壹佰圓</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <p class="text-xs text-slate-500 mt-2 font-medium">✨ 100% 重磅純棉 · 數位微噴印花</p>
+      </div>
+
+      <!-- 商品資訊與按鈕操作區 -->
+      <div class="p-8 flex flex-col justify-between">
+        <div>
+          <div class="text-xs font-bold tracking-wider text-emerald-600 uppercase mb-1">潮牌限定系列</div>
+          <h1 class="text-2xl lg:text-3xl font-extrabold text-slate-900 leading-tight mb-2">財源滾滾 · 鈔票印花短袖 T恤</h1>
+          <p class="text-sm text-slate-500 mb-4">結合千元大鈔與富貴金錢元素的限定潮T，穿上氣勢滿滿，象徵財富自由！</p>
+          
+          <div class="flex items-baseline space-x-3 mb-6">
+            <span class="text-3xl font-black text-emerald-600">NT$ 888</span>
+            <span class="text-sm text-slate-400 line-through">NT$ 1,680</span>
+            <span class="bg-emerald-50 text-emerald-700 text-xs px-2 py-0.5 rounded font-semibold">5.2 折特惠</span>
+          </div>
+
+          <!-- 尺寸選擇 -->
+          <div class="mb-6">
+            <label class="block text-xs font-semibold text-slate-600 uppercase mb-2">選擇尺寸</label>
+            <div class="flex gap-2">
+              <button type="button" class="px-4 py-2 border-2 border-slate-200 rounded-lg text-sm font-semibold hover:border-emerald-500 focus:border-emerald-600 focus:bg-emerald-50 active:scale-95 transition">M</button>
+              <button type="button" class="px-4 py-2 border-2 border-emerald-600 bg-emerald-50 text-emerald-800 rounded-lg text-sm font-semibold active:scale-95 transition">L</button>
+              <button type="button" class="px-4 py-2 border-2 border-slate-200 rounded-lg text-sm font-semibold hover:border-emerald-500 focus:border-emerald-600 focus:bg-emerald-50 active:scale-95 transition">XL</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 按鈕區 -->
+        <div class="space-y-3">
+          <button 
+            id="addToCartBtn" 
+            onclick="handleAddToCart(event)"
+            class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-4 px-6 rounded-2xl shadow-lg shadow-emerald-500/30 active:scale-98 transition flex items-center justify-center space-x-2 text-lg cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+            </svg>
+            <span>加入購物車 (發射鈔票衣服特效)</span>
+          </button>
+
+          <!-- 提示訊息框 -->
+          <div id="noticeBox" class="hidden text-center text-sm font-medium text-emerald-700 bg-emerald-100 py-2 px-3 rounded-lg border border-emerald-200 transition">
+            🎉 已成功加入購物車！鈔票衣服漫天飛舞！
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let cartTotal = 0;
+
+    // 定義印有鈔票圖案衣服的向量 SVG 模板
+    const moneyShirtSvgTemplate = `
+      <svg viewBox="0 0 160 160" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <!-- T-Shirt 衣服白底輪廓 -->
+        <path d="M 50 15 C 65 24, 95 24, 110 15 L 145 40 L 125 65 L 115 58 L 115 145 L 45 145 L 45 58 L 35 65 L 15 40 Z" 
+              fill="#ffffff" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+        <!-- 領口 -->
+        <path d="M 50 15 C 65 24, 95 24, 110 15 C 95 28, 65 28, 50 15 Z" fill="#e2e8f0"/>
+        
+        <!-- 衣服中間印著的鈔票 (千元台幣風格藍鈔) -->
+        <g transform="translate(52, 60)">
+          <rect width="56" height="30" rx="2" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.2"/>
+          <rect x="2" y="2" width="52" height="26" rx="1.5" fill="#60a5fa" opacity="0.9"/>
+          <circle cx="15" cy="15" r="7" fill="#bfdbfe"/>
+          <text x="26" y="19" font-size="10" font-weight="900" fill="#ffffff" font-family="monospace">1000</text>
+          <text x="5" y="8" font-size="4" fill="#ffffff" font-weight="bold">$NT</text>
+        </g>
+        
+        <!-- 飄散的微型金錢小標籤裝飾 -->
+        <circle cx="130" cy="90" r="6" fill="#fbbf24" stroke="#d97706" stroke-width="1.5"/>
+        <text x="127" y="94" font-size="8" font-weight="bold" fill="#78350f">$</text>
+      </svg>
+    `;
+
+    // 點擊「加入購物車」的事件處理
+    function handleAddToCart(event) {
+      // 1. 購物車數量增加
+      cartTotal++;
+      document.getElementById('cartCount').textContent = cartTotal;
+
+      // 2. 顯示溫馨提示通知
+      const notice = document.getElementById('noticeBox');
+      notice.classList.remove('hidden');
+      setTimeout(() => {
+        notice.classList.add('hidden');
+      }, 2500);
+
+      // 3. 獲取按鈕座標，作為飛出的起點
+      const rect = event.currentTarget.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+
+      // 4. 觸發爆發式「鈔票衣服」飛舞動畫
+      spawnFlyingShirts(originX, originY, 32);
+    }
+
+    function spawnFlyingShirts(startX, startY, count) {
+      for (let i = 0; i < count; i++) {
+        const shirt = document.createElement('div');
+        shirt.className = 'flying-tshirt';
+
+        // 隨機尺寸 (寬度 55px ~ 110px)
+        const size = Math.floor(Math.random() * 55) + 55;
+        shirt.style.width = `${size}px`;
+        shirt.style.height = `${size}px`;
+
+        // 起點位置 (按鈕中央)
+        shirt.style.left = `${startX - size / 2}px`;
+        shirt.style.top = `${startY - size / 2}px`;
+
+        // 隨機向四周發射的向量位移
+        // 角度範圍 360 度，偏向上方與兩側噴發
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 650 + 250; 
+        const targetX = Math.cos(angle) * distance;
+        // 稍微往上方拋物線噴灑
+        const targetY = Math.sin(angle) * distance - (Math.random() * 200 + 100);
+
+        // 隨機自轉圈數 (-720deg 到 720deg)
+        const rotation = (Math.random() - 0.5) * 1440;
+        
+        // 隨機動畫時長 (1.4s ~ 2.6s)
+        const duration = (Math.random() * 1.2 + 1.4).toFixed(2);
+        
+        // 隨機結束時的縮放比例
+        const endScale = (Math.random() * 0.7 + 0.8).toFixed(2);
+
+        // 注入 CSS 變數供 floatFly 動畫使用
+        shirt.style.setProperty('--tx', `${targetX}px`);
+        shirt.style.setProperty('--ty', `${targetY}px`);
+        shirt.style.setProperty('--rot', `${rotation}deg`);
+        shirt.style.setProperty('--scale-end', endScale);
+        shirt.style.setProperty('--duration', `${duration}s`);
+
+        // 置入鈔票T恤 SVG
+        shirt.innerHTML = moneyShirtSvgTemplate;
+
+        // 加入 DOM
+        document.body.appendChild(shirt);
+
+        // 動畫結束後自動清除 DOM 元素避免內存洩漏
+        setTimeout(() => {
+          shirt.remove();
+        }, duration * 1000);
+      }
+    }
+  </script>
+</body>
+</html>
